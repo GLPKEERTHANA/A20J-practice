@@ -1,23 +1,29 @@
 #include <iostream>
 #include<string>
+#include<climits>
+#include<vector>
+#include<algorithm>
 using namespace std;
 
 int main()
 {    
-	int p,k;
-	cin>>p;
-	cin>>k;
-	int n=2001;
-	unordered_map<int,unordered_set<int>> m;
-	for(int i=2;i<=n;i++)
-	{  for(int j=1;j<=(int)sqrt(i);j++)
-	{
-		if(i%j==0) {m[i].insert(j);m.insert(i/j);}
-	}
-	}
-	cout<<m[6];
+int n,m;
+cin>>n;
+cin>>m;
+vector<int> a(m,0);
+for(int i=0;i<m;i++)
+cin>>a[i];
+sort(a.begin(),a.end());
+int min1=INT_MAX;
+int i=0,j=n-1;
+while(i<m && j<m)
+{
+min1=min(min1,a[j]-a[i]);
+i++;
+j++;
 
+}
 
-
+	cout << min1 << endl;
     return 0;
 }
